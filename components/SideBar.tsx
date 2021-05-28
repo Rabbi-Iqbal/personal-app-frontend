@@ -1,3 +1,4 @@
+import React from "react";
 import { Avatar } from "@material-ui/core";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -24,7 +25,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import React from "react";
+import styles from "../styles/SideBar.module.scss";
 const drawerWidth = 300;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -61,7 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerOpen: {
       backgroundColor: "#5D6BA7",
-      overflow:'hidden',
+      overflow: "hidden",
       width: drawerWidth,
       transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
@@ -91,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       // marginTop: -50,
-      padding: theme.spacing(3),
+      // padding: theme.spacing(3),
     },
   })
 );
@@ -190,7 +191,9 @@ export default function SideBar(props) {
         {/* {open && ( */}
         <div style={{ width: "100%" }}>
           <div
-            className={open ? "container-open" : "container-close"}
+            className={
+              open ? styles["container-open"] : styles["container-close"]
+            }
             style={{
               display: "flex",
               flexDirection: "column",

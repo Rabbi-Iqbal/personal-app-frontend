@@ -1,0 +1,17 @@
+.container {
+  min-height: 300px;
+  background-color: #f4f1f1;
+  .split {
+    display: flex;
+    .left {
+      max-width: 800px;
+      padding-right: 20px;
+    }
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
+  }
+}
