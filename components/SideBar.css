@@ -1,0 +1,35 @@
+@keyframes example {
+  from {
+  }
+  to {
+    height: 0px;
+  }
+}
+@keyframes exampleopen {
+  from {
+      height: 0px;
+  }
+  to {
+    height: 320px;
+  }
+}
+
+/* The element to apply the animation to */
+.container-close {
+  /* width: 100px; */
+  height: 320px;
+  visibility: hidden;
+  /* background-color: red; */
+  animation-name: example;
+  animation-fill-mode: forwards;
+  
+  animation-duration: 1.5s;
+}
+.container-open {
+    /* width: 400px; */
+    height: 320px;
+    /* background-color: red; */
+    animation-fill-mode: forwards;
+  animation-name: exampleopen;
+  animation-duration: 1s;
+}

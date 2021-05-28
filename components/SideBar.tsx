@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerOpen: {
       backgroundColor: "#5D6BA7",
+      overflow:'hidden',
       width: drawerWidth,
       transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
@@ -130,7 +131,6 @@ export default function SideBar(props) {
             [classes.drawerClose]: !open,
           }),
         }}
-        style={{ backgroundColor: "red" }}
       >
         {!open ? (
           <div
@@ -154,70 +154,83 @@ export default function SideBar(props) {
           </div>
         ) : (
           <div className={classes.toolbar}>
-            <div style={{ display: "flex", flex: 1, justifyContent: "center" }}>
-              <Typography
-                style={{
-                  marginTop: 20,
-                  color: "#fff",
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                }}
-                variant="h5"
-                gutterBottom
-              >
-                Iqbal Hossain
-              </Typography>
+            <div
+              style={{
+                display: "flex",
+                flex: 1,
+                justifyContent: "center",
+                position: "relative",
+                alignItems: "center",
+                height: 60,
+              }}
+            >
+              <div>
+                <Typography
+                  style={{
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: "1.5rem",
+                  }}
+                  variant="h5"
+                >
+                  Iqbal Hossain
+                </Typography>
+              </div>
             </div>
-            <IconButton onClick={handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
+            <div style={{ position: "absolute", right: 0 }}>
+              <IconButton onClick={handleDrawerClose}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </div>
           </div>
         )}
 
         <Divider />
 
-        {open && (
-          <div style={{ width: "100%" }}>
+        {/* {open && ( */}
+        <div style={{ width: "100%" }}>
+          <div
+            className={open ? "container-open" : "container-close"}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "280px",
+              overflow: "hidden",
+            }}
+          >
+            <Avatar
+              style={{ width: 150, height: 150, marginTop: 10 }}
+              alt="Iqbal Hossain"
+              src="https://media-exp1.licdn.com/dms/image/C5103AQHvVINsqoFpjw/profile-displayphoto-shrink_400_400/0/1553267878909?e=1627516800&v=beta&t=gXXSb31hdzp1KOfatlAOJhARndUfR2ARpl-O8bBnZmY"
+            />
+            <Typography
+              align="center"
+              style={{
+                marginTop: 10,
+                color: "#fff",
+                padding: 10,
+                whiteSpace: "initial",
+              }}
+              variant="body2"
+              gutterBottom
+            >
+              Hello and Welcome! My name is Iqbal and I've been working as a
+              Full-Stack developer for the more than a couple of years now.
+            </Typography>
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                width: "280px",
+                justifyContent: "space-around",
+                width: "30%",
               }}
             >
-              <Avatar
-                style={{ width: 150, height: 150, marginTop: 10 }}
-                alt="Iqbal Hossain"
-                src="https://media-exp1.licdn.com/dms/image/C5103AQHvVINsqoFpjw/profile-displayphoto-shrink_400_400/0/1553267878909?e=1627516800&v=beta&t=gXXSb31hdzp1KOfatlAOJhARndUfR2ARpl-O8bBnZmY"
-              />
-              <Typography
-                align="center"
-                style={{
-                  marginTop: 10,
-                  color: "#fff",
-                  padding: 10,
-                  whiteSpace: "initial",
-                }}
-                variant="body2"
-                gutterBottom
-              >
-                Hello and Welcome! My name is Iqbal and I've been working as a
-                Full-Stack developer for the more than a couple of years now.
-              </Typography>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-around",
-                  width: "30%",
-                }}
-              >
-                <LinkedInIcon />
-                <GitHubIcon />
-              </div>
+              <LinkedInIcon />
+              <GitHubIcon />
             </div>
           </div>
-        )}
+        </div>
+        {/* )} */}
 
         <List>
           {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
