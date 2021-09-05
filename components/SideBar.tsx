@@ -25,6 +25,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from '@material-ui/icons/Home';
+import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import styles from "../styles/SideBar.module.scss";
 const drawerWidth = 300;
 
@@ -111,15 +114,6 @@ export default function SideBar(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      {/* <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-
-        <Toolbar/>
-      </AppBar> */}
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
@@ -188,7 +182,6 @@ export default function SideBar(props) {
 
         <Divider />
 
-        {/* {open && ( */}
         <div style={{ width: "100%" }}>
           <div
             className={
@@ -205,7 +198,7 @@ export default function SideBar(props) {
             <Avatar
               style={{ width: 150, height: 150, marginTop: 10 }}
               alt="Iqbal Hossain"
-              src="https://media-exp1.licdn.com/dms/image/C5103AQHvVINsqoFpjw/profile-displayphoto-shrink_400_400/0/1553267878909?e=1627516800&v=beta&t=gXXSb31hdzp1KOfatlAOJhARndUfR2ARpl-O8bBnZmY"
+              src="/me2.jpg"
             />
             <Typography
               align="center"
@@ -219,7 +212,7 @@ export default function SideBar(props) {
               gutterBottom
             >
               Hello and Welcome! My name is Iqbal and I've been working as a
-              Full-Stack developer for the more than a couple of years now.
+              Full-Stack developer for about 3 years now. Feel free to look around my portal and let me know if I could be of any assistance.
             </Typography>
             <div
               style={{
@@ -233,17 +226,26 @@ export default function SideBar(props) {
             </div>
           </div>
         </div>
-        {/* )} */}
 
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <LibraryBooksIcon />
+            </ListItemIcon>
+            <ListItemText primary="Blogs" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <PermContactCalendarIcon />
+            </ListItemIcon>
+            <ListItemText primary="Contact" />
+          </ListItem>
         </List>
       </Drawer>
       <main className={classes.content}>
