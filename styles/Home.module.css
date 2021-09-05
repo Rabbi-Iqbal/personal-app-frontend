@@ -65,8 +65,8 @@
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+    monospace;
 }
 
 .grid {
@@ -118,4 +118,16 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.skillsContent {
+  display: flex;
+  align-items: center;
+}
+.skillsContent > * {
+  margin: 0px 15px 0px 15px;
+}
+
+.skillsTitle {
+  margin-top: 20px !important;
 }

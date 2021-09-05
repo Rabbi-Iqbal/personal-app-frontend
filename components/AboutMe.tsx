@@ -10,18 +10,15 @@ const AboutMe = () => {
           <Typography variant="h5" gutterBottom>
             Full Stack Developer
           </Typography>
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget
-            porttitor mauris. Praesent posuere vestibulum felis non elementum.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia curae; Ut eleifend ut mauris at tincidunt.
+          <Typography variant="body1" style={{fontSize: 20}}>
+            Demonstrated experience in building robust and scalable software solutions. Detail-oriented, inquisitive, and adaptive individual. Always seeking an opportunity to utilize my skills and develop my career in the aspect of software engineering.
           </Typography>
         </div>
         <div className={styles.right}>
           <img
-            width="350px"
-            height="250px"
-            src="/roman-synkevych-vXInUOv1n84.jpg"
+            width="250px"
+            height="320px"
+            src="/me.jpg"
             alt="Logo"
           />
         </div>
