@@ -94,6 +94,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     content: {
       flexGrow: 1,
+      overflowX:'scroll'
       // marginTop: -50,
       // padding: theme.spacing(3),
     },
