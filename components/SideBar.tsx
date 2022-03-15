@@ -1,108 +1,72 @@
 import React from "react";
-import { Avatar } from "@material-ui/core";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import clsx from "clsx";
-import {
-  createStyles,
-  Theme,
-  makeStyles,
-  useTheme,
-} from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import HomeIcon from '@material-ui/icons/Home';
-import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import HomeIcon from '@mui/icons-material/Home';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import MenuIcon from "@mui/icons-material/Menu";
+import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
+import { Avatar } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import MuiDrawer from '@mui/material/Drawer';
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import { CSSObject, styled, Theme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 import styles from "../styles/SideBar.module.scss";
+
 const drawerWidth = 300;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-    },
-    appBar: {
-      zIndex: theme.zIndex.drawer - 1,
-      backgroundColor: "red",
-      transition: theme.transitions.create(["width", "margin"], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(["width", "margin"], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    menuButton: {
-      // marginRight: 36,
-    },
-    hide: {
-      display: "none",
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-      whiteSpace: "nowrap",
-    },
-    drawerOpen: {
-      backgroundColor: "#5D6BA7",
-      overflow: "hidden",
-      width: drawerWidth,
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    drawerClose: {
-      backgroundColor: "#5D6BA7",
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      overflowX: "hidden",
-      width: theme.spacing(7) + 1,
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9) + 1,
-      },
-    },
-    toolbar: {
-      display: "flex",
-      alignItems: "center",
-      // justifyContent: "flex-end",
-      // padding: theme.spacing(0, 1),
-      // necessary for content to be below app bar
-      // ...theme.mixins.toolbar,
-    },
-    content: {
-      flexGrow: 1,
-      overflowX:'scroll'
-      // marginTop: -50,
-      // padding: theme.spacing(3),
-    },
-  })
+
+const openedMixin = (theme: Theme): CSSObject => ({
+  width: drawerWidth,
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: 'hidden',
+});
+
+const closedMixin = (theme: Theme): CSSObject => ({
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up('sm')]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
+
+
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+      ...openedMixin(theme),
+      '& .MuiDrawer-paper': openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      '& .MuiDrawer-paper': closedMixin(theme),
+    }),
+  }),
 );
-export default function SideBar(props) {
-  const classes = useStyles();
-  const theme = useTheme();
+
+type AppProps = {
+  children: React.ReactNode;
+};
+
+export default function SideBar(props: AppProps) {
+
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -113,21 +77,9 @@ export default function SideBar(props) {
     setOpen(false);
   };
   return (
-    <div className={classes.root}>
+    <div style={{ display: 'flex' }}>
       <CssBaseline />
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
+      <Drawer variant="permanent" open={open} PaperProps={{ sx: { backgroundColor: '#5D6BA7' } }} >
         {!open ? (
           <div
             style={{
@@ -141,29 +93,26 @@ export default function SideBar(props) {
               aria-label="open drawer"
               onClick={handleDrawerOpen}
               edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open,
-              })}
-            >
+              size="large">
               <MenuIcon />
             </IconButton>
           </div>
         ) : (
-          <div className={classes.toolbar}>
+          <div className={styles['toolbar']}>
             <div
               style={{
                 display: "flex",
-                flex: 1,
                 justifyContent: "center",
                 position: "relative",
                 alignItems: "center",
                 height: 60,
+                width: '100%'
               }}
             >
               <div>
                 <Typography
                   style={{
-                    color: "#fff",
+                    color: "#000",
                     fontWeight: "bold",
                     fontSize: "1.5rem",
                   }}
@@ -174,13 +123,12 @@ export default function SideBar(props) {
               </div>
             </div>
             <div style={{ position: "absolute", right: 0 }}>
-              <IconButton onClick={handleDrawerClose}>
+              <IconButton onClick={handleDrawerClose} size="large">
                 <ChevronLeftIcon />
               </IconButton>
             </div>
           </div>
         )}
-
         <Divider />
 
         <div style={{ width: "100%" }}>
@@ -227,7 +175,6 @@ export default function SideBar(props) {
             </div>
           </div>
         </div>
-
         <List>
           <ListItem button>
             <ListItemIcon>
@@ -248,9 +195,9 @@ export default function SideBar(props) {
             <ListItemText primary="Contact" />
           </ListItem>
         </List>
+        <Divider />
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
+      <main className={styles['content']}>
         {props.children}
       </main>
     </div>

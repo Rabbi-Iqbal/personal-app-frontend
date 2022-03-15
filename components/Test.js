@@ -1,4 +1,4 @@
-const { Button } = require("@material-ui/core");
+const { Button } = require("@mui/material");
 const { useState } = require("react");
 
 const Test = () => {

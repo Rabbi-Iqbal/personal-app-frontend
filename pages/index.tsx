@@ -1,9 +1,10 @@
-import { StylesProvider, Typography } from "@material-ui/core";
-import SideBar from "../components/SideBar";
-import AboutMe from "../components/AboutMe";
 import "@fontsource/roboto";
+import { Typography } from "@mui/material";
+import AboutMe from "../components/AboutMe";
 import SectionCard from "../components/SectionCard";
-import styles from '../styles/Home.module.css'
+import SideBar from "../components/SideBar";
+import styles from '../styles/Home.module.css';
+
 
 export default function Home() {
   return (
@@ -35,11 +36,11 @@ export default function Home() {
           </div>
           <Typography className={styles.skillsTitle} variant="h5">Others</Typography>
           <div className={styles.skillsContent}>
-          <img src="https://img.icons8.com/color/48/000000/git.png"/>
-          <img src="https://img.icons8.com/color/48/000000/nginx.png"/>
-          <img src="https://img.icons8.com/color/48/000000/docker.png"/>
-          <img src="https://img.icons8.com/color/48/000000/html-5--v1.png"/>
-          <img src="https://img.icons8.com/color/48/000000/css3.png"/>
+            <img src="https://img.icons8.com/color/48/000000/git.png" />
+            <img src="https://img.icons8.com/color/48/000000/nginx.png" />
+            <img src="https://img.icons8.com/color/48/000000/docker.png" />
+            <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" />
+            <img src="https://img.icons8.com/color/48/000000/css3.png" />
           </div>
         </div>
       </SideBar>

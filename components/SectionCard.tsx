@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import styles from "../styles/SectionCard.module.scss";
 
 const SectionCard = (props) => {
