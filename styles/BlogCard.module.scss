@@ -1,0 +1,43 @@
+.container {
+	height: 180px;
+	max-width: 690px;
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+	cursor: pointer;
+}
+
+.author {
+	display: flex;
+	align-items: center;
+}
+
+.title {
+	margin-top: 10px;
+	font-size: 25px;
+	font-weight: bold;
+}
+.imageContainer {
+	display: flex;
+	align-items: center;
+	margin-left: 15px;
+}
+
+.metaData {
+	font-size: 14px;
+	font-weight: 400;
+}
+.image {
+	max-height: 150px;
+	max-width: 250px;
+}
+
+.text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
+	margin-bottom: 15px;
+}

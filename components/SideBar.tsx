@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link'
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeIcon from '@mui/icons-material/Home';
@@ -183,9 +184,11 @@ export default function SideBar(props: AppProps) {
             <ListItemText primary="Home" />
           </ListItem>
           <ListItem button>
+            <Link href='/blogs'>
             <ListItemIcon>
               <LibraryBooksIcon />
             </ListItemIcon>
+            </Link>
             <ListItemText primary="Blogs" />
           </ListItem>
           <ListItem button>

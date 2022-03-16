@@ -1,9 +1,14 @@
 import axiosClient from "./config";
 
-export function postBlog(blog) {
+const postBlog = (blog) => {
   return axiosClient.post("/blog", blog);
-}
+};
 
-export default {
+const getAllBlogs = () => {
+  return axiosClient.get("/blogs");
+};
+
+export {
   postBlog,
+  getAllBlogs,
 };

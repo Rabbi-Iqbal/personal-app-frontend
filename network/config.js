@@ -1,7 +1,9 @@
 import axios from "axios";
 
+export const baseURL = "http://localhost:8000";
+
 const axiosClient = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -14,7 +16,7 @@ axiosClient.interceptors.response.use(
   },
   function (error) {
     let res = error.response;
-    console.log(res)
+    console.log(res);
     if (res.status == 401) {
       window.location.href = "/";
     }
