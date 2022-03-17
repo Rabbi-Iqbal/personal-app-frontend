@@ -50,7 +50,7 @@ function Blogs() {
             imgSrc={`${baseURL}/${blog.image}`}
             date="March 14, 2022"
             readTime={10}
-            onClick={() => console.log("card clicked!")}
+            onClick={() => router.push(`/blogs/${blog._id}`)}
           />
         ))}
       </div>
