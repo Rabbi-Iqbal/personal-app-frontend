@@ -1,16 +1,16 @@
-import React from "react";
-import Link from 'next/link'
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import HomeIcon from '@mui/icons-material/Home';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import HomeIcon from "@mui/icons-material/Home";
+import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MenuIcon from "@mui/icons-material/Menu";
-import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
+import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import { Avatar } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
-import MuiDrawer from '@mui/material/Drawer';
+import MuiDrawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -22,65 +22,76 @@ import styles from "../styles/SideBar.module.scss";
 
 const drawerWidth = 300;
 
-
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
-  transition: theme.transitions.create('width', {
+  transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
-  overflowX: 'hidden',
+  overflowX: "hidden",
 });
 
 const closedMixin = (theme: Theme): CSSObject => ({
-  transition: theme.transitions.create('width', {
+  transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  overflowX: 'hidden',
+  overflowX: "hidden",
   width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
 
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
-    ...(open && {
-      ...openedMixin(theme),
-      '& .MuiDrawer-paper': openedMixin(theme),
-    }),
-    ...(!open && {
-      ...closedMixin(theme),
-      '& .MuiDrawer-paper': closedMixin(theme),
-    }),
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  whiteSpace: "nowrap",
+  boxSizing: "border-box",
+  ...(open && {
+    ...openedMixin(theme),
+    "& .MuiDrawer-paper": openedMixin(theme),
   }),
-);
+  ...(!open && {
+    ...closedMixin(theme),
+    "& .MuiDrawer-paper": closedMixin(theme),
+  }),
+}));
 
 type AppProps = {
   children: React.ReactNode;
 };
 
 export default function SideBar(props: AppProps) {
+  const router = useRouter();
 
   const [open, setOpen] = React.useState(false);
 
+  useEffect(() => {
+    console.log("rendered");
+  });
+
+  const [currentStyle, setCurrentStyle] = useState("container-first-load");
+
   const handleDrawerOpen = () => {
+    setCurrentStyle("container-open");
     setOpen(true);
   };
 
   const handleDrawerClose = () => {
+    setCurrentStyle("container-close");
     setOpen(false);
   };
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <CssBaseline />
-      <Drawer variant="permanent" open={open} PaperProps={{ sx: { backgroundColor: '#5D6BA7' } }} >
+      <Drawer
+        variant="permanent"
+        open={open}
+        PaperProps={{ sx: { backgroundColor: "#5D6BA7" } }}
+      >
         {!open ? (
           <div
             style={{
@@ -94,12 +105,13 @@ export default function SideBar(props: AppProps) {
               aria-label="open drawer"
               onClick={handleDrawerOpen}
               edge="start"
-              size="large">
+              size="large"
+            >
               <MenuIcon />
             </IconButton>
           </div>
         ) : (
-          <div className={styles['toolbar']}>
+          <div className={styles["toolbar"]}>
             <div
               style={{
                 display: "flex",
@@ -107,7 +119,7 @@ export default function SideBar(props: AppProps) {
                 position: "relative",
                 alignItems: "center",
                 height: 60,
-                width: '100%'
+                width: "100%",
               }}
             >
               <div>
@@ -135,7 +147,9 @@ export default function SideBar(props: AppProps) {
         <div style={{ width: "100%" }}>
           <div
             className={
-              open ? styles["container-open"] : styles["container-close"]
+              styles[currentStyle]
+              // getClassName()
+              // open ? styles["container-open"] : styles["container-close"]
             }
             style={{
               display: "flex",
@@ -162,7 +176,8 @@ export default function SideBar(props: AppProps) {
               gutterBottom
             >
               Hello and Welcome! My name is Iqbal and I've been working as a
-              Full-Stack developer for about 3 years now. Feel free to look around my portal and let me know if I could be of any assistance.
+              Full-Stack developer for about 3 years now. Feel free to look
+              around my portal and let me know if I could be of any assistance.
             </Typography>
             <div
               style={{
@@ -177,18 +192,16 @@ export default function SideBar(props: AppProps) {
           </div>
         </div>
         <List>
-          <ListItem button>
+          <ListItem button onClick={() => router.push("/")}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button>
-            <Link href='/blogs'>
+          <ListItem button onClick={() => router.push("/blogs")}>
             <ListItemIcon>
               <LibraryBooksIcon />
             </ListItemIcon>
-            </Link>
             <ListItemText primary="Blogs" />
           </ListItem>
           <ListItem button>
@@ -200,9 +213,7 @@ export default function SideBar(props: AppProps) {
         </List>
         <Divider />
       </Drawer>
-      <main className={styles['content']}>
-        {props.children}
-      </main>
+      <main className={styles["content"]}>{props.children}</main>
     </div>
   );
 }

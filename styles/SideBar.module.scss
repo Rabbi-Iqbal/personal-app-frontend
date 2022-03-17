@@ -15,12 +15,16 @@
 }
 
 /* The element to apply the animation to */
+.container-first-load {
+  height: 0px;
+  visibility: hidden;
+  display: none;
+}
 .container-close {
   height: 320px;
   visibility: hidden;
   animation-name: example;
   animation-fill-mode: forwards;
-
   animation-duration: 1.5s;
 }
 .container-open {
@@ -30,7 +34,7 @@
   animation-duration: 1s;
 }
 
-.content{
+.content {
   flex-grow: 1;
 }
 

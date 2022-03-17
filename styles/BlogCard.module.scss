@@ -4,7 +4,7 @@
 	padding: 15px;
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 	cursor: pointer;
 }
 
@@ -17,17 +17,24 @@
 	margin-top: 10px;
 	font-size: 25px;
 	font-weight: bold;
-}
-.imageContainer {
-	display: flex;
-	align-items: center;
-	margin-left: 15px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-box-orient: vertical;
 }
 
 .metaData {
 	font-size: 14px;
 	font-weight: 400;
 }
+
+.imageContainer {
+	display: flex;
+	align-items: center;
+	margin-left: 15px;
+}
+
 .image {
 	max-height: 150px;
 	max-width: 250px;
@@ -36,6 +43,7 @@
 .text {
 	overflow: hidden;
 	text-overflow: ellipsis;
+	line-height: 23px;
 	display: -webkit-box;
 	-webkit-line-clamp: 2; /* number of lines to show */
 	-webkit-box-orient: vertical;
