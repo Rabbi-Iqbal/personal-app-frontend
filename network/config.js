@@ -19,7 +19,7 @@ axiosClient.interceptors.response.use(
     let res = error.response;
     console.log(res);
     if (res.status == 401) {
-      window.location.href = "/";
+      window.location.href = "/sign-in";
     }
     console.error("Looks like there was a problem. Status Code: " + res.status);
     return Promise.reject(error);
