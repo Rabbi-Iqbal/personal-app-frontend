@@ -11,8 +11,13 @@ function Blogs() {
   const [blogs, setBlogs] = useState([]);
 
   const handleGetAllBlogs = async () => {
-    const res = await getAllBlogs();
-    setBlogs(res.data);
+    try {
+      const res = await getAllBlogs();
+      console.log(res)
+      setBlogs(res.data);
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   useEffect(() => {
